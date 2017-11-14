@@ -29,7 +29,19 @@ public class Sorting {
      * @return the sorted array, or null on failure
      */
     static int[] bubbleSort(final int[] array) {
-        return null;
+        int n = array.length;
+        int temp = 0;
+         for (int i = 0; i < n; i++) {
+             for (int j = 1; j < (n - i); j++) {
+                 if (array[j - 1] > array[j]) {
+                     //swap elements
+                     temp = array[j - 1];
+                     array[j - 1] = array[j];
+                     array[j] = temp;
+                 }
+             }
+         }
+         return array;
     }
 
     /**
@@ -39,7 +51,18 @@ public class Sorting {
      * @return the sorted array, or null on failure
      */
     static int[] selectionSort(final int[] array) {
-        return null;
+        for (int i = 0; i < array.length - 1; i++) {
+            int index = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < array[index]) {
+                    index = j; //searching for lowest index
+                }
+            }
+            int smallerNumber = array[index];
+            array[index] = array[i];
+            array[i] = smallerNumber;
+        }
+        return array;
     }
 
     /**
@@ -49,7 +72,23 @@ public class Sorting {
      * @return the sorted array, or null on failure
      */
     static int[] mergeSort(final int[] array) {
-        return null;
+        if (array.length == 1) {
+            return array;
+        } else if (array.length == 2) {
+            if (array[0] > array[1]) {
+                int temp = array[0];
+                array[0] = array[1];
+                array[1] = temp;
+            }
+            return array;
+        } else {
+            int[] array1 = array[0..mid];
+            int[] array2 = array[mid+1..end];
+            int[] sorted_array1 = mergeSort(array1);
+            int[] sorted_array2 = mergeSort(array1);
+            int[] sorted_array = merge(sorted_array1, sorted_array2);
+        }
+
     }
 
     /**
